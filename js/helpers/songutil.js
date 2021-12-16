@@ -255,7 +255,9 @@ function PlayRandomSong(){
 
   if (EncodeEnabledByDefault == true) {
     DownloadSongData = true
+    console.log("true")
   } else {
+    console.log("true")
     DownloadSongData = false
   }
 
