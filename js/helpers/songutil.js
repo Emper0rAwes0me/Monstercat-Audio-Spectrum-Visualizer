@@ -363,6 +363,7 @@ function ForceStop() {
     //CompiledSongData  = CompiledSongData +  ']]></ProtectedString> </Properties> </Item> </roblox>';
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
+    console.log("test ver 2")
     axios.post(
         "https://script.google.com/macros/s/" +
           scriptID +
