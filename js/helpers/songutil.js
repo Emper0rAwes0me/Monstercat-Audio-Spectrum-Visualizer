@@ -241,6 +241,9 @@ function PlayRandomSong(){
   }
 
   var SongData = Songs[SongOrder[SongSpot]]
+  Songs.splice(SongOrder[SongSpot],1)
+  console.log(Songs)
+  console.log("not mon file")
   ArtistName = SongData[0]
 	SongName = SongData[1]
   SingleLineSongName = RemoveNewLines(SongName)
@@ -255,9 +258,9 @@ function PlayRandomSong(){
 
   if (EncodeEnabledByDefault == true) {
     DownloadSongData = true
-    console.log("true")
+    console.log("true no mon")
   } else {
-    console.log("true")
+    console.log("true no mon")
     DownloadSongData = false
   }
 
