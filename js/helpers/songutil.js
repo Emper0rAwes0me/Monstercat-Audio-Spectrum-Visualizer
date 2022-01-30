@@ -56,6 +56,23 @@ var token = "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"
 
 
 function createGist(name,desc,data,public) {
+   var data = {  
+  "description": desc,
+  "public": public,
+  "files": {
+    "file1.txt": {
+      "content": data
+    }
+  }
+};
+   var xhr = new XMLHttpRequest();  
+   xhr.open("post", "https://api.github.com/gists", true);  
+   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');  
+   xhr.onload = function(e) {  
+  // do stuff with the response, like show a link to the created gist
+   };
+   xhr.send(JSON.stringify(data));  
+/*
     var gist = {
     "description": desc,
     "public": public,
@@ -68,6 +85,7 @@ function createGist(name,desc,data,public) {
 	
    var requestResponse = octokit.request('POST /gists', gist})
    return requestResponse
+   */
 }
 
 function Preload(ImageUrl) {
