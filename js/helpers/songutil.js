@@ -70,6 +70,7 @@ function createGist(name,desc,data,public) {
    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');  
    xhr.onload = function(e) {  
   // do stuff with the response, like show a link to the created gist
+   console.log(e)
    };
    xhr.send(JSON.stringify(data));  
 /*
