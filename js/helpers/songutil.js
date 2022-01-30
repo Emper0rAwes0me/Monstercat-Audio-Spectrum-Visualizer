@@ -66,7 +66,7 @@ function createGist(name,desc,data,public) {
     }
 };
 	
-   var requestResponse = await octokit.request('POST /gists', gist})
+   var requestResponse = octokit.request('POST /gists', gist})
    return requestResponse
 }
 
