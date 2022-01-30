@@ -65,10 +65,11 @@ function createGist(name,desc,data,public) {
         }
     }
 };
+    console.log("requesting gist")
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://api.github.com/gists", true);
     xhr.setRequestHeader('Content-Type', 'application/vnd.github.v3+json');
-    xhr.setRequestHeader('Authorization','bearer ' + token)
+    //xhr.setRequestHeader('Authorization','bearer ' + token)
     var response = xhr.send(gist);
     console.log(response)
     return response
