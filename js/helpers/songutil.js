@@ -370,7 +370,7 @@ function ForceStop() {
           "?sheet=Global2&key=" +
           "test" +
           "&value=" +
-          CompiledSongData,
+          "test",
         {}
       );
     //download(CompiledSongData, FileName, "text/plain");
