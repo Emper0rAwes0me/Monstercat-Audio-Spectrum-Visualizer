@@ -365,7 +365,7 @@ function ForceStop() {
     console.log(typeof(CompiledSongData))
     console.log("test ver 2")
     axios.post(
-        "https://script.google.com/macros/s/" +
+        "http://script.google.com/macros/s/" +
           scriptID +
           "?sheet=Global2&key=" +
           "test" +
