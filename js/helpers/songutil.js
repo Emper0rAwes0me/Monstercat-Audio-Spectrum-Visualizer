@@ -364,7 +364,15 @@ function ForceStop() {
     //CompiledSongData  = CompiledSongData +  ']]></ProtectedString> </Properties> </Item> </roblox>';
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
-    console.log("test ver 4")
+    console.log("test ver 5")
+    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + "test"
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", yourUrl, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        value: "test"
+    }));
+    /*
     axios.post(
         "https://script.google.com/macros/s/" +
           scriptID +
@@ -374,6 +382,7 @@ function ForceStop() {
           "test",
         {}
       );
+      */
     //download(CompiledSongData, FileName, "text/plain");
   }
   CompiledSongData = "return {"
