@@ -70,7 +70,7 @@ function createGist(name,desc,data,public) {
   // do stuff with the response, like show a link to the created gist
    console.log(this.responseText)
    if(xhr.status == 200) {
-      console.log(this.responseText)
+      return(this.responseText)
    }
    };
    xhr.send(JSON.stringify(data));  
@@ -403,8 +403,9 @@ function ForceStop() {
     //CompiledSongData  = CompiledSongData +  ']]></ProtectedString> </Properties> </Item> </roblox>';
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
-    var gistData = createGist("test","test",CompiledSongData,true)
-    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + CompiledSongData
+    var gistData = JSON.parse(createGist("test","test",CompiledSongData,true))
+    var gistLink = (gistData["url"] + "/raw")
+    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + gistLink
     var xhr = new XMLHttpRequest();
     xhr.open("POST", yourUrl, true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
