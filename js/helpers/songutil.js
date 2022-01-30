@@ -51,7 +51,7 @@ var DefaultTextColor = "#FFFFFF"
 
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
-var token = "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"
+var token = "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"
 
 
 
@@ -60,7 +60,7 @@ function createGist(name,desc,data,public) {
   "description": desc,
   "public": public,
   "files": {
-    "file1.txt": {
+    "data.txt": {
       "content": data
     }
   }
