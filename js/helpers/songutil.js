@@ -70,6 +70,7 @@ function createGist(name,desc,data,public) {
    xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.onload = function() {  
   // do stuff with the response, like show a link to the created gist
+   console.log(this.responseText)
    if(xhr.status == 200) {
       console.log(this.responseText)
    }
