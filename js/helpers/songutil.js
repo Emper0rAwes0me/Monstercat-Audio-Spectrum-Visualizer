@@ -1,4 +1,4 @@
-console.log("ver 16")
+console.log("ver 17")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -75,20 +75,6 @@ function createGist(name,desc,data,public) {
    };
    xhr.send(JSON.stringify(data));  
    console.log(xhr.response)
-/*
-    var gist = {
-    "description": desc,
-    "public": public,
-    "files": {
-        "check.txt": {
-            "content":  data
-        }
-    }
-};
-	
-   var requestResponse = octokit.request('POST /gists', gist})
-   return requestResponse
-   */
 }
 
 function Preload(ImageUrl) {
