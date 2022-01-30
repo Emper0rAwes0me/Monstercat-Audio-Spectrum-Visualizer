@@ -1,3 +1,4 @@
+console.log("ver 8")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -385,7 +386,6 @@ function ForceStop() {
     //CompiledSongData  = CompiledSongData +  ']]></ProtectedString> </Properties> </Item> </roblox>';
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
-    console.log("test ver 7")
     var gistData = createGist("test","test",CompiledSongData,true)
     yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + CompiledSongData
     var xhr = new XMLHttpRequest();
