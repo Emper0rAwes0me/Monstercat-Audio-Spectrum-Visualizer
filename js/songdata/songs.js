@@ -11,10 +11,10 @@
 //AddSong("camellia","the red room","idk","red.mp3","img/albums/single.png","single")
 //AddSong("usao","knight rider","idk","rider.ogg","img/albums/single.png","single")
 //AddSong("camellia","polybius speedrun","idk","speedrun.mp3","img/albums/single.png","single")
-//AddSong("camellia","spin eternally","idk","spin.mp3","img/albums/single.png","single")
+AddSong("camellia","spin eternally","idk","spin.mp3","img/albums/single.png","single")
 //AddSong("camellia","wysi","idk","wysi.mp3","img/albums/single.png","single")
 //AddSong("Steven Universe","Peace and love","idk","Peace.mp3","img/albums/single.png","single")
-AddSong("Calliope Mori","Excuse My Rudeness, But Could You Please Die?","idk","rudeness.mp3","img/albums/single.png","single")
+//AddSong("Calliope Mori","Excuse My Rudeness, But Could You Please Die?","idk","rudeness.mp3","img/albums/single.png","single")
 
 
 
