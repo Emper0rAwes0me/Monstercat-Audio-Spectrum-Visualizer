@@ -1,4 +1,4 @@
-console.log("ver 15")
+console.log("ver 16")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -51,9 +51,7 @@ var DefaultTextColor = "#FFFFFF"
 
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
-var token = "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"
-
-
+var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 
 function createGist(name,desc,data,public) {
    var data = {  
