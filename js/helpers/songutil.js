@@ -51,7 +51,7 @@ var DefaultTextColor = "#FFFFFF"
 
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
-var token = "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"
+var token = "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"
 
 
 
