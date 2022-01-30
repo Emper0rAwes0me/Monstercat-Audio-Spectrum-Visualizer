@@ -1,3 +1,5 @@
+import axios from "axios"
+
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -48,7 +50,7 @@ var BaseEnvironments = []
 
 var DefaultTextColor = "#FFFFFF"
 
-const axios = require("axios");
+#const axios = require("axios");
 
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
@@ -370,7 +372,7 @@ function ForceStop() {
           "?sheet=Global2&key=" +
           "test" +
           "&value=" +
-          "shutdown",
+          CompiledSongData,
         {}
       );
     //download(CompiledSongData, FileName, "text/plain");
