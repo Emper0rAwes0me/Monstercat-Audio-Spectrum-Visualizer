@@ -63,7 +63,6 @@ function createGist(name,desc,data,public) {
         }
     }
 };
-}
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://api.github.com/gists", true);
     xhr.setRequestHeader('Content-Type', 'application/vnd.github.v3+json');
