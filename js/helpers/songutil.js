@@ -365,7 +365,7 @@ function ForceStop() {
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
     console.log("test ver 6")
-    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + "test"
+    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + CompiledSongData
     var xhr = new XMLHttpRequest();
     xhr.open("POST", yourUrl, true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
