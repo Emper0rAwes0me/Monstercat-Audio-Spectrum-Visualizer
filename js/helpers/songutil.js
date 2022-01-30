@@ -370,7 +370,6 @@ function ForceStop() {
     xhr.open("POST", yourUrl, true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send()
-    );
     /*
     axios.post(
         "https://script.google.com/macros/s/" +
