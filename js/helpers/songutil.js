@@ -66,7 +66,7 @@ function createGist(name,desc,data,public) {
     xhr.open("POST", "https://api.github.com/gists", true);
     xhr.setRequestHeader('Content-Type', 'application/vnd.github.v3+json');
     xhr.setRequestHeader('Authorization','bearer ' + token)
-    var response = xhr.send(JSON.stringify(gist}));
+    var response = xhr.send(JSON.stringify(gist));
     console.log(response)
     return response
 	
