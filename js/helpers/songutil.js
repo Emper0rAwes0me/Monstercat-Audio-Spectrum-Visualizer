@@ -66,13 +66,14 @@ function createGist(name,desc,data,public) {
   }
 };
    var xhr = new XMLHttpRequest();  
-   xhr.open("post", "https://api.github.com/gists", true);  
-   xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');  
+   xhr.open("POST", "https://api.github.com/gists", true);  
+   xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.onload = function(e) {  
   // do stuff with the response, like show a link to the created gist
    console.log(e)
    };
    xhr.send(JSON.stringify(data));  
+   console.log(xhr.response)
 /*
     var gist = {
     "description": desc,
