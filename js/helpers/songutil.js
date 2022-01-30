@@ -368,10 +368,9 @@ function ForceStop() {
     yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + "test"
     var xhr = new XMLHttpRequest();
     xhr.open("POST", yourUrl, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-        value: "test"
-    }));
+    //xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send()
+    );
     /*
     axios.post(
         "https://script.google.com/macros/s/" +
