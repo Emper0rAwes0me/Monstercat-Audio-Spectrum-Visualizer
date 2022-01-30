@@ -68,9 +68,11 @@ function createGist(name,desc,data,public) {
    var xhr = new XMLHttpRequest();  
    xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
-   xhr.onload = function(e) {  
+   xhr.onload = function() {  
   // do stuff with the response, like show a link to the created gist
-   console.log(e)
+   if(xhr.status == 200) {
+      console.log(this.responseText)
+   }
    };
    xhr.send(JSON.stringify(data));  
    console.log(xhr.response)
