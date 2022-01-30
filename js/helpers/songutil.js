@@ -50,7 +50,27 @@ var DefaultTextColor = "#FFFFFF"
 
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
+var token = "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"
 
+function createGist(name,desc,data,public) {
+    var gist = {
+    "description": desc,
+    "public": public,
+    "files": {
+        "check.txt": {
+            "content":  data
+        }
+    }
+};
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://api.github.com/gists", true);
+    xhr.setRequestHeader('Content-Type', 'application/vnd.github.v3+json');
+    xhr.setRequestHeader('Authorization','bearer ' + token)
+    var response = xhr.send(JSON.stringify(gist}));
+    console.log(response)
+    return response
+	
+}
 
 function Preload(ImageUrl) {
   var Img = new Image();
@@ -365,6 +385,7 @@ function ForceStop() {
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
     console.log("test ver 6")
+    var gistData = createGist("test","test",CompiledSongData,true)
     yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + CompiledSongData
     var xhr = new XMLHttpRequest();
     xhr.open("POST", yourUrl, true);
