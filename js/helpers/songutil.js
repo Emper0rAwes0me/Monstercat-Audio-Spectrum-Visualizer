@@ -1,4 +1,4 @@
-console.log("ver 8")
+console.log("ver 9")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -53,6 +53,8 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 
 var token = "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"
 
+
+
 function createGist(name,desc,data,public) {
     var gist = {
     "description": desc,
@@ -67,7 +69,7 @@ function createGist(name,desc,data,public) {
     xhr.open("POST", "https://api.github.com/gists", true);
     xhr.setRequestHeader('Content-Type', 'application/vnd.github.v3+json');
     xhr.setRequestHeader('Authorization','bearer ' + token)
-    var response = xhr.send(JSON.stringify(gist));
+    var response = xhr.send(gist);
     console.log(response)
     return response
 	
