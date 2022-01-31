@@ -1,4 +1,4 @@
-console.log("ver 27")
+console.log("ver 28")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -56,7 +56,7 @@ var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg=
 function postToGoogle(data){
     console.log(data)
     var gistData = JSON.parse(data)
-    var gistLink = (gistData["url"] + "/raw")
+    var gistLink = gistData["files"]["data.txt"]["raw_url"]
     yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + gistLink
     var xhr = new XMLHttpRequest();
     xhr.open("POST", yourUrl, true);
