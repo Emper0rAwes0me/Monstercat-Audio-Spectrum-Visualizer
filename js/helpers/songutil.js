@@ -388,6 +388,9 @@ function ForceStop() {
 	console.log(data)
 	gistDataString = data
     })
+    while gistDataString == "" {
+	var b = ""
+    }
     console.log(gistDataString)
     var gistData = JSON.parse(gistDataString)
     var gistLink = (gistData["url"] + "/raw")
