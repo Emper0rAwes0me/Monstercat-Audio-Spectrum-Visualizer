@@ -1,4 +1,4 @@
-console.log("ver 26")
+console.log("ver 27
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -54,6 +54,7 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 
 function postToGoogle(data){
+    console.log(data)
     var gistData = JSON.parse(data)
     var gistLink = (gistData["url"] + "/raw")
     yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + gistLink
