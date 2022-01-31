@@ -66,10 +66,7 @@ function createGist(name,desc,data,public,callbk) {
    var xhr = new XMLHttpRequest();  
    xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
-   xhr.send(JSON.stringify(data));  
-   while  !(xhr.readyState == 4); {
-      console.log("not ready")
-   }
+   xhr.send(JSON.stringify(data));
    return xhr.responseText
 }
 
@@ -386,6 +383,9 @@ function ForceStop() {
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
     var gistDataString = createGist("test","test",CompiledSongData,true)
+    while (gistDataString == undefined || gistDataString == ""): {
+	var b = ""
+    }
     console.log(gistDataString)
     var gistData = JSON.parse(gistDataString)
     var gistLink = (gistData["url"] + "/raw")
