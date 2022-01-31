@@ -67,9 +67,9 @@ function createGist(name,desc,data,public,callbk) {
    xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.send(JSON.stringify(data));  
-   if (xhr.status == 200) {
-      callbck(xhr.responseText)
-   }
+   xhr.onload = function() {  
+      callbk(this.responseText)
+   };
 }
 
 function Preload(ImageUrl) {
@@ -388,7 +388,7 @@ function ForceStop() {
 	console.log(data)
 	gistDataString = data
     })
-    while (gistDataString == "") {
+    while (gistDataString == undefined or gistDataString == "") {
 	var b = ""
     }
     console.log(gistDataString)
