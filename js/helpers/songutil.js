@@ -67,9 +67,10 @@ function createGist(name,desc,data,public,callbk) {
    xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.send(JSON.stringify(data));  
-   xhr.onload = function() {  
-      callbk(this.responseText)
-   };
+   while not (xhr.readyState == 4); {
+      console.log("not ready")
+   }
+   return xhr.responseText
 }
 
 function Preload(ImageUrl) {
@@ -384,13 +385,7 @@ function ForceStop() {
     //CompiledSongData  = CompiledSongData +  ']]></ProtectedString> </Properties> </Item> </roblox>';
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
-    var gistDataString = createGist("test","test",CompiledSongData,true,function(data){
-	console.log(data)
-	gistDataString = data
-    })
-    while (gistDataString == undefined) or (gistDataString == ""); {
-	var b = ""
-    }
+    var gistDataString = createGist("test","test",CompiledSongData,true)
     console.log(gistDataString)
     var gistData = JSON.parse(gistDataString)
     var gistLink = (gistData["url"] + "/raw")
