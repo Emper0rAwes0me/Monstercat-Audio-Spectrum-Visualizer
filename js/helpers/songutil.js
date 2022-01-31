@@ -69,6 +69,7 @@ function createGist(name,desc,data,public,callbk) {
    xhr.send(JSON.stringify(data));  
    if (xhr.status == 200) {
       callbck(xhr.responseText)
+   }
 }
 
 function Preload(ImageUrl) {
