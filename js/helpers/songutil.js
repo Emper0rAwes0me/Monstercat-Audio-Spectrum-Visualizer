@@ -1,4 +1,4 @@
-console.log("ver 20")
+console.log("ver 21")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -53,7 +53,7 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 
-function createGist(name,desc,data,public) {
+function createGist(name,desc,data,public,callbk) {
    var data = {  
   "description": desc,
   "public": public,
@@ -64,19 +64,11 @@ function createGist(name,desc,data,public) {
   }
 };
    var xhr = new XMLHttpRequest();  
-   xhr.open("POST", "https://api.github.com/gists", false);  
+   xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
-   var jsonString = ""
-   xhr.onload = function() {  
-  // do stuff with the response, like show a link to the created gist
-   //console.log(this.responseText)
-   if(xhr.status == 200) {
-      jsonString = this.responseText
-   }
-   };
    xhr.send(JSON.stringify(data));  
    //console.log(xhr.response)
-   return jsonString
+   return xhr.responseText
 }
 
 function Preload(ImageUrl) {
