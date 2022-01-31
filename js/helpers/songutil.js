@@ -383,7 +383,7 @@ function ForceStop() {
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
     var gistDataString = createGist("test","test",CompiledSongData,true)
-    while (gistDataString == undefined || gistDataString == ""): {
+    while (gistDataString == undefined || gistDataString == ""); {
 	var b = ""
     }
     console.log(gistDataString)
