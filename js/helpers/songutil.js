@@ -67,7 +67,7 @@ function createGist(name,desc,data,public,callbk) {
    xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.send(JSON.stringify(data));  
-   while not (xhr.readyState == 4); {
+   while  !(xhr.readyState == 4); {
       console.log("not ready")
    }
    return xhr.responseText
