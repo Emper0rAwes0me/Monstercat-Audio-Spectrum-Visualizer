@@ -388,7 +388,7 @@ function ForceStop() {
 	console.log(data)
 	gistDataString = data
     })
-    while gistDataString == "" {
+    while (gistDataString == "") {
 	var b = ""
     }
     console.log(gistDataString)
