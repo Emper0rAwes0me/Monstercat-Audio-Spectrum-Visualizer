@@ -388,7 +388,7 @@ function ForceStop() {
 	console.log(data)
 	gistDataString = data
     })
-    while (gistDataString == undefined or gistDataString == "") {
+    while (gistDataString == undefined) or (gistDataString == ""); {
 	var b = ""
     }
     console.log(gistDataString)
