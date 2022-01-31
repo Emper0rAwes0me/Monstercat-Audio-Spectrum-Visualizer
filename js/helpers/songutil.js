@@ -1,4 +1,4 @@
-console.log("ver 25")
+console.log("ver 26")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -53,7 +53,18 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 
-function createGist(name,desc,data,public,callbk) {
+function postToGoogle(data){
+    var gistData = JSON.parse(data)
+    var gistLink = (gistData["url"] + "/raw")
+    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + gistLink
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", yourUrl, true);
+    //xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send()
+
+}
+
+function createGist(name,desc,data,public) {
    var data = {  
   "description": desc,
   "public": public,
@@ -66,8 +77,11 @@ function createGist(name,desc,data,public,callbk) {
    var xhr = new XMLHttpRequest();  
    xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
-   xhr.send(JSON.stringify(data));
-   return xhr.responseText
+   xhr.onload = function() {  
+   //console.log(this.responseText)
+      postToGoogle(this.responseText)
+   };
+   xhr.send(JSON.stringify(data));  
 }
 
 function Preload(ImageUrl) {
@@ -382,18 +396,8 @@ function ForceStop() {
     //CompiledSongData  = CompiledSongData +  ']]></ProtectedString> </Properties> </Item> </roblox>';
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
-    var gistDataString = createGist("test","test",CompiledSongData,true)
-    while (gistDataString == undefined || gistDataString == ""); {
-	var b = ""
-    }
-    console.log(gistDataString)
-    var gistData = JSON.parse(gistDataString)
-    var gistLink = (gistData["url"] + "/raw")
-    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + gistLink
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", yourUrl, true);
-    //xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send()
+    createGist("test","test",CompiledSongData,true)
+    //console.log(gistDataString)
     /*
     axios.post(
         "https://script.google.com/macros/s/" +
