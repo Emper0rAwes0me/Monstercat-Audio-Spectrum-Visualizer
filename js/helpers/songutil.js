@@ -391,7 +391,9 @@ function ForceStop() {
     //CompiledSongData  = CompiledSongData +  ']]></ProtectedString> </Properties> </Item> </roblox>';
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
-    var gistData = JSON.parse(createGist("test","test",CompiledSongData,true))
+    var gistDataString = createGist("test","test",CompiledSongData,true)
+    console.log(gistDataString)
+    var gistData = JSON.parse(gistDataString)
     var gistLink = (gistData["url"] + "/raw")
     yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + gistLink
     var xhr = new XMLHttpRequest();
