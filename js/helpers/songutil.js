@@ -64,7 +64,7 @@ function createGist(name,desc,data,public) {
   }
 };
    var xhr = new XMLHttpRequest();  
-   xhr.open("POST", "https://api.github.com/gists", true);  
+   xhr.open("POST", "https://api.github.com/gists", false);  
    xhr.setRequestHeader('Authorization','token ' + token);  
    var jsonString = ""
    xhr.onload = function() {  
