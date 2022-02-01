@@ -1,4 +1,4 @@
-console.log("ver 33")
+console.log("ver 34")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -70,7 +70,7 @@ function httpGetIfRequested() {
     xml.send(null);
     //console.log(xml.responseText)
     xml.onload = function() {
-        //console.log(this.responseText)
+        console.log(this.responseText)
 	if (JSON.parse(this.responseText)["value"] != "none") {
             postToGoogle("none","Js")
             $.get('https://www.freecodecamp.com/', function(response) {  console.log(response);});
