@@ -69,7 +69,7 @@ function httpGetIfRequested() {
     xml.open( "GET", theUrl, true);
     xml.send();
     console.log(xml.responseText)
-    xml.onload = function {
+    xml.onload = function() {
 	if (JSON.parse(this.responseText)["value"] != "none") {
             postToGoogle("Js","none")
             $.get('https://www.freecodecamp.com/', function(response) {  console.log(response);});
