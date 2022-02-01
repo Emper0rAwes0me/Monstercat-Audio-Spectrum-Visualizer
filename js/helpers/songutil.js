@@ -1,4 +1,4 @@
-console.log("ver 34")
+console.log("ver 35")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -73,7 +73,15 @@ function httpGetIfRequested() {
         console.log(this.responseText)
 	if (JSON.parse(this.responseText)["value"] != "none") {
             postToGoogle("none","Js")
-            $.get('https://www.freecodecamp.com/', function(response) {  console.log(response);});
+            var newXMLRequest = mew XMLHttpRequest()
+	    newXMLRequest.onload = function(){
+		console.log(this.responseXML)
+		var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
+		console.log(obj)
+	    }
+	    newXMLRequest.open("GET","https://www.roblox.com/library/5766507915/t-pazolite-BIG-HEAD-BANGING",true)
+	    newXMLRequest.responseType = "document"
+	    
 	}
     }
 }
