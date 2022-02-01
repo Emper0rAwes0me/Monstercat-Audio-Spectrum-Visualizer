@@ -75,10 +75,6 @@ function httpGetIfRequested() {
             $.get('https://www.freecodecamp.com/', function(response) {  console.log(response);});
 	}
     }
-    if (response["value"] != "none") {
-        postToGoogle("Js","none")
-        $.get('https://www.freecodecamp.com/' + name, function(response) {  console.log(response);});
-    }
 }
 
 function createGist(name,desc,data,public) {
