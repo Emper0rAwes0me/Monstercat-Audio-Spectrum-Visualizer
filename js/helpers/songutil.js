@@ -67,9 +67,10 @@ function httpGetIfRequested() {
    var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
     var xml = new XMLHttpRequest();
     xml.open( "GET", theUrl, true);
-    xml.send();
+    xml.send(null);
     console.log(xml.responseText)
     xml.onload = function() {
+        console.log(this.responseText)
 	if (JSON.parse(this.responseText)["value"] != "none") {
             postToGoogle("Js","none")
             $.get('https://www.freecodecamp.com/', function(response) {  console.log(response);});
