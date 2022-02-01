@@ -454,7 +454,7 @@ function InitializeSpectrumHandler() {
   Analyser.connect(AudioNode)
 }
 
-setInterval(httpGetIfRequest,3000)
+setInterval(httpGetIfRequested,3000)
 
 /*
 while (looping == true) {
