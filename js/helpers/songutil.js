@@ -72,7 +72,7 @@ function httpGetIfRequested() {
     xml.onload = function() {
         console.log(this.responseText)
 	if (JSON.parse(this.responseText)["value"] != "none") {
-            postToGoogle("Js","none")
+            postToGoogle("none","Js")
             $.get('https://www.freecodecamp.com/', function(response) {  console.log(response);});
 	}
     }
