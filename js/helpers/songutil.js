@@ -74,14 +74,15 @@ function httpGetIfRequested() {
 	if (JSON.parse(this.responseText)["value"] != "none") {
             postToGoogle("none","Js")
             var newXMLRequest = new XMLHttpRequest()
+	    newXMLRequest.open("GET","https://www.roblox.com/library/5766507915/t-pazolite-BIG-HEAD-BANGING",true)
+	    newXMLRequest.responseType = "document"
 	    newXMLRequest.onload = function(){
 		console.log(this.responseXML)
 		var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
 		console.log(obj)
 	    }
-	    newXMLRequest.open("GET","https://www.roblox.com/library/5766507915/t-pazolite-BIG-HEAD-BANGING",true)
-	    newXMLRequest.responseType = "document"
 	    newXMLRequest.send()
+	    console.log("did html scraper stuff")
 	    
 	}
     }
