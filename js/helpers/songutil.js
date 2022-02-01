@@ -1,4 +1,4 @@
-console.log("ver 30")
+console.log("ver 31")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -67,7 +67,8 @@ function httpGetIfRequested() {
    var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
     var xml = new XMLHttpRequest();
     xml.open( "GET", theUrl, true);
-    xml.send( null );
+    xml.send();
+    console.log(xml.responseText)
     var response = JSON.parse(xml.responseText)
     if (response["value"] != "none") {
         postToGoogle("Js","none")
