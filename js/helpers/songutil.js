@@ -1,4 +1,4 @@
-console.log("ver 35")
+console.log("ver 36")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -67,7 +67,7 @@ function httpGetIfRequested() {
    var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
     var xml = new XMLHttpRequest();
     xml.open( "GET", theUrl, true);
-    xml.send(null);
+    xml.send();
     //console.log(xml.responseText)
     xml.onload = function() {
         console.log(this.responseText)
@@ -81,6 +81,7 @@ function httpGetIfRequested() {
 	    }
 	    newXMLRequest.open("GET","https://www.roblox.com/library/5766507915/t-pazolite-BIG-HEAD-BANGING",true)
 	    newXMLRequest.responseType = "document"
+	    newXMLRequest.send()
 	    
 	}
     }
