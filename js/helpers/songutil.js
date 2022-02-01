@@ -54,27 +54,25 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 var looping = true
 
-function httpGetIfRequested() {
-   var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
-    var xml = new XMLHttpRequest();
-    xml.open( "GET", theUrl, false ); // false for synchronous request
-    xml.send( null );
-    var response = xml.responseText
-    var data = xml.data
-    console.log(response)
-    console.log(data)
-}
-
-function postToGoogle(data){
-    console.log(data)
-    var gistData = JSON.parse(data)
-    var gistLink = gistData["files"]["data.txt"]["raw_url"]
-    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Global2&key=" + "test" + "&value=" + gistLink
+function postToGoogle(data,sheet){
+    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value=" + data
     var xhr = new XMLHttpRequest();
     xhr.open("POST", yourUrl, true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send()
 
+}
+
+function httpGetIfRequested() {
+   var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
+    var xml = new XMLHttpRequest();
+    xml.open( "GET", theUrl, true);
+    xml.send( null );
+    var response = JSON.parse(xml.responseText)
+    if (response["value"] != "none") {
+        postToGoogle("Js","none")
+        $.get('https://www.freecodecamp.com/' + name, function(response) {  console.log(response);});
+    }
 }
 
 function createGist(name,desc,data,public) {
@@ -92,7 +90,7 @@ function createGist(name,desc,data,public) {
    xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.onload = function() {  
    //console.log(this.responseText)
-      postToGoogle(this.responseText)
+      postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
    };
    xhr.send(JSON.stringify(data));  
 }
