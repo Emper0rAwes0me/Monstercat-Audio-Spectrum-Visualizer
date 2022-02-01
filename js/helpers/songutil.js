@@ -54,12 +54,15 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 var looping = true
 
-function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp
+function httpGetIfRequested() {
+   var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
+    var xml = new XMLHttpRequest();
+    xml.open( "GET", theUrl, false ); // false for synchronous request
+    xml.send( null );
+    var response = xml.responseText
+    var data = xml.data
+    console.log(response)
+    console.log(data)
 }
 
 function postToGoogle(data){
@@ -451,8 +454,12 @@ function InitializeSpectrumHandler() {
   Analyser.connect(AudioNode)
 }
 
+setInterval(httpGetIfRequest,3000)
+
+/*
 while (looping == true) {
     var data = httpGet("https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=")
     print(data.responseText)
     print(data.data)
 }
+*/
