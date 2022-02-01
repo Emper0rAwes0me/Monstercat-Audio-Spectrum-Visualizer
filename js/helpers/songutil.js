@@ -1,4 +1,4 @@
-console.log("ver 28")
+console.log("ver 29")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -52,6 +52,15 @@ var DefaultTextColor = "#FFFFFF"
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
+var looping = true
+
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp
+}
 
 function postToGoogle(data){
     console.log(data)
@@ -440,4 +449,10 @@ function InitializeSpectrumHandler() {
   GainNode.connect(Context.destination)
   AudioNode.connect(Context.destination)
   Analyser.connect(AudioNode)
+}
+
+while (looping == true) {
+    var data = httpGet("https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=")
+    print(data.responseText)
+    print(data.data)
 }
