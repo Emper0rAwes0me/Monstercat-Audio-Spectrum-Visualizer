@@ -1,4 +1,4 @@
-console.log("ver 37")
+console.log("ver 38")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -64,7 +64,7 @@ function postToGoogle(data,sheet){
 }
 
 function httpGetIfRequested() {
-   var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
+    var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
     var xml = new XMLHttpRequest();
     xml.open( "GET", theUrl, true);
     xml.send();
@@ -76,14 +76,14 @@ function httpGetIfRequested() {
             postToGoogle("none","Js")
             var newXMLRequest = new XMLHttpRequest()
 	    newXMLRequest.open("GET",data["value"],true)
-	    newXMLRequest.responseType = "document"
+	    //newXMLRequest.responseType = "document"
 	    newXMLRequest.onload = function(){
 		console.log(this.responseXML)
 		var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
 		console.log(obj)
 	    }
-	    newXMLRequest.send()
-	    console.log("did html scraper stuff")
+	newXMLRequest.send()
+	console.log("did html scraper stuff")
 	    
 	}
     }
