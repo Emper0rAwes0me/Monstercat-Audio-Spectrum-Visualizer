@@ -66,7 +66,7 @@ function postToGoogle(data,sheet){
 }
 
 function httpGetIfRequested() {
-    var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Js&key=" + "test" + "&value=" 
+    var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Py&key=" + "test" + "&value=" 
     var xml = new XMLHttpRequest();
     xml.open( "GET", theUrl, true);
     xml.send();
@@ -81,6 +81,13 @@ function httpGetIfRequested() {
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
 	       console.log(JSON.parse(newXMLRequest.responseText))
+	       var songFile = JSON.parse(newXMLRequest.responseText)["value"]
+	       var fileread = new FileReader()
+	       fileread.onload = function() {
+	           console.log(fileread.result)
+	       
+	       }
+	       reader.readAsDataURL(songFile)
 	       
 	     }
 	console.log("did html scraper stuff")
