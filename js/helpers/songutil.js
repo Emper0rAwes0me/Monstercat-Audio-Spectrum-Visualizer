@@ -81,7 +81,7 @@ function httpGetIfRequested() {
 	   newXMLRequest.onload = function(){
 	       console.log(newXMLRequest.responseXML)
 	       var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
-	       //var obj2 = document.querySelector("#AssetThumbnail > div.MediaPlayerControls > div")
+	       var obj2 = document.querySelector("#AssetThumbnail > div.MediaPlayerControls > div")
 	       console.log(obj.XPathResult)
 	     }
 	console.log("did html scraper stuff")
