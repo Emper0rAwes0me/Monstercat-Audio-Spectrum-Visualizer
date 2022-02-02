@@ -54,6 +54,8 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 var looping = true
 
+
+
 function postToGoogle(data,sheet){
     yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value=" + data
     var xhr = new XMLHttpRequest();
@@ -75,14 +77,11 @@ function httpGetIfRequested() {
 	if (data["value"] != "none") {
            //postToGoogle("none","Js")
            var newXMLRequest = new XMLHttpRequest()
-	   newXMLRequest.open("GET","https://script.google.com/macros/s/" + scriptID + "?sheet=" + "Js" + "&key=" + "test" + "&value=",true)
-	   newXMLRequest.responseType = "document"
+	   newXMLRequest.open("GET","https://script.google.com/macros/s/" + scriptID + "?sheet=" + "Py" + "&key=" + "test" + "&value=",true)
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
-	       console.log(newXMLRequest.responseXML)
-	       var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
-	       var obj2 = document.querySelector("#AssetThumbnail > div.MediaPlayerControls > div")
-	       console.log(obj.XPathResult)
+	       console.log(JSON.parse(newXMLRequest.responseText))
+	       
 	     }
 	console.log("did html scraper stuff")
 	}
