@@ -1,4 +1,4 @@
-console.log("ver 45")
+console.log("ver 46")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -75,7 +75,7 @@ function httpGetIfRequested() {
 	if (data["value"] != "none") {
            //postToGoogle("none","Js")
            var newXMLRequest = new XMLHttpRequest()
-	   newXMLRequest.open("GET","https://www.roblox.com/library/4749836067/Camellia-An-artifice",true)
+	   newXMLRequest.open("GET","https://www.youtube.com/watch?v=u11P3h3xyw4",true)
 	   newXMLRequest.responseType = "document"
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
