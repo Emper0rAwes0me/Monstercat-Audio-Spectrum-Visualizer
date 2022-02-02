@@ -73,17 +73,17 @@ function httpGetIfRequested() {
 	var data = JSON.parse(xml.responseText)
         console.log(xml.responseText)
 	if (data["value"] != "none") {
-            postToGoogle("none","Js")
-            var newXMLRequest = new XMLHttpRequest()
-	    newXMLRequest.open("POST",data["value"],true)
-	    newXMLRequest.responseType = "document"
-	    newXMLRequest.send()
-	    newXMLRequest.onload = function(){
-		console.log(newXMLRequest.responseXML)
-		var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
-		console.log(obj)
-	    }
-	    console.log("did html scraper stuff")
+           postToGoogle("none","Js")
+           var newXMLRequest = new XMLHttpRequest()
+	   newXMLRequest.open("GET",data["value"],true)
+	   newXMLRequest.responseType = "document"
+	   newXMLRequest.send()
+	   newXMLRequest.onload = function(){
+	       console.log(newXMLRequest.responseXML)
+	       var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
+	       console.log(obj)
+	     }
+	console.log("did html scraper stuff")
 	}
     }
 }
