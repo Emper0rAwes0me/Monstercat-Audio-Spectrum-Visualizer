@@ -89,7 +89,7 @@ function httpGetIfRequested() {
 }
 
 function createGist(name,desc,data,public) {
-   var data = {  
+   var dat = {  
   "description": desc,
   "public": public,
   "files": {
@@ -105,7 +105,7 @@ function createGist(name,desc,data,public) {
    //console.log(this.responseText)
       postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
    };
-   xhr.send(JSON.stringify(data));  
+   xhr.send(JSON.stringify(dat));  
 }
 
 function Preload(ImageUrl) {
