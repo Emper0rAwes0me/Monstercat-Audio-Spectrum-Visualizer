@@ -1,4 +1,4 @@
-console.log("ver 41")
+console.log("ver 42")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -81,7 +81,8 @@ function httpGetIfRequested() {
 	   newXMLRequest.onload = function(){
 	       console.log(newXMLRequest.responseXML)
 	       var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
-	       console.log(obj)
+	       //var obj2 = document.querySelector("#AssetThumbnail > div.MediaPlayerControls > div")
+	       console.log(obj.XPathResult)
 	     }
 	console.log("did html scraper stuff")
 	}
