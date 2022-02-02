@@ -75,7 +75,7 @@ function httpGetIfRequested() {
 	if (data["value"] != "none") {
            //postToGoogle("none","Js")
            var newXMLRequest = new XMLHttpRequest()
-	   newXMLRequest.open("GET","https://www.youtube.com/watch?v=u11P3h3xyw4",true)
+	   newXMLRequest.open("GET","https://script.google.com/macros/s/" + scriptID + "?sheet=" + "Js" + "&key=" + "test" + "&value=",true)
 	   newXMLRequest.responseType = "document"
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
