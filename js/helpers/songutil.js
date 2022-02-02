@@ -75,8 +75,8 @@ function httpGetIfRequested() {
 	if (data["value"] != "none") {
             postToGoogle("none","Js")
             var newXMLRequest = new XMLHttpRequest()
-	    newXMLRequest.open("GET",data["value"],true)
-	    //newXMLRequest.responseType = "document"
+	    newXMLRequest.open("POST",data["value"],true)
+	    newXMLRequest.responseType = "document"
 	    newXMLRequest.onload = function(){
 		console.log(this.responseXML)
 		var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
