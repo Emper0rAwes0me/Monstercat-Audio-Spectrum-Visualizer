@@ -73,7 +73,7 @@ function httpGetIfRequested() {
 	var data = JSON.parse(xml.responseText)
         console.log(xml.responseText)
 	if (data["value"] != "none") {
-           postToGoogle("none","Js")
+           //postToGoogle("none","Js")
            var newXMLRequest = new XMLHttpRequest()
 	   newXMLRequest.open("GET",data["value"],true)
 	   newXMLRequest.responseType = "document"
