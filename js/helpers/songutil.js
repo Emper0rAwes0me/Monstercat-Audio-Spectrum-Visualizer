@@ -70,11 +70,12 @@ function httpGetIfRequested() {
     xml.send();
     //console.log(xml.responseText)
     xml.onload = function() {
+	var data = JSON.parse(this.responseText)
         console.log(this.responseText)
-	if (JSON.parse(this.responseText)["value"] != "none") {
+	if (data["value"] != "none") {
             postToGoogle("none","Js")
             var newXMLRequest = new XMLHttpRequest()
-	    newXMLRequest.open("GET","https://www.roblox.com/library/5766507915/t-pazolite-BIG-HEAD-BANGING",true)
+	    newXMLRequest.open("GET",data["value"],true)
 	    newXMLRequest.responseType = "document"
 	    newXMLRequest.onload = function(){
 		console.log(this.responseXML)
