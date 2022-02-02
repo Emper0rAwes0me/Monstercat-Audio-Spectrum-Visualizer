@@ -70,21 +70,20 @@ function httpGetIfRequested() {
     xml.send();
     //console.log(xml.responseText)
     xml.onload = function() {
-	var data = JSON.parse(this.responseText)
-        console.log(this.responseText)
+	var data = JSON.parse(xml.responseText)
+        console.log(xml.responseText)
 	if (data["value"] != "none") {
             postToGoogle("none","Js")
             var newXMLRequest = new XMLHttpRequest()
 	    newXMLRequest.open("POST",data["value"],true)
 	    newXMLRequest.responseType = "document"
+	    newXMLRequest.send()
 	    newXMLRequest.onload = function(){
-		console.log(this.responseXML)
+		console.log(newXMLRequest.responseXML)
 		var obj = document.evaluate('//*[@id="AssetThumbnail"]/div[4]/div',this.responseXML,null,XPathResult.ANY_TYPE)
 		console.log(obj)
 	    }
-	newXMLRequest.send()
-	console.log("did html scraper stuff")
-	    
+	    console.log("did html scraper stuff")
 	}
     }
 }
