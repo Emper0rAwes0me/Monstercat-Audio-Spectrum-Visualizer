@@ -91,7 +91,7 @@ function httpGetIfRequested() {
 		  },function(Message){
 	                console.log(Message)
 		      }
-		    }
+		    })
                 });
 	       /*
 	       console.log(JSON.parse(newXMLRequest.responseText))
