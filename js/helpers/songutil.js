@@ -1,4 +1,4 @@
-console.log("ver 48")
+console.log("ver 50")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -57,7 +57,7 @@ var looping = true
 
 
 function postToGoogle(data,sheet){
-    yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value=" + data
+    var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value=" + data
     var xhr = new XMLHttpRequest();
     xhr.open("POST", yourUrl, true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
@@ -81,11 +81,15 @@ function httpGetIfRequested() {
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
 	       console.log(JSON.parse(newXMLRequest.responseText))
-	       var songFile = JSON.parse(newXMLRequest.responseText)["value"]
+	       var songFile = new URL (JSON.parse(newXMLRequest.responseText)["value"])
+	       var file = new File(songFile.getFile())
+	       console.log(file)
+	       /*
 	       $.get('blob:' + songFile).then(function(data) {
-                  var blob = new Blob([data], { type: 'audio/ogg' });
-		  var file = new File([blob], "requestedSong",{type: 'audio/ogg'});
+                  var blob = new Blob([data], { type: 'audio/mpeg' });
+		  var file = new File([blob], "requestedSong",{type: 'audio/mpeg'});
                });
+	       */
 	       
 	     }
 	console.log("did html scraper stuff")
