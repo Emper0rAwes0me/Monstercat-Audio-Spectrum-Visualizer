@@ -1,4 +1,4 @@
-console.log("ver 51")
+console.log("ver 52")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -77,11 +77,12 @@ function httpGetIfRequested() {
 	   newXMLRequest.open("GET","https://script.google.com/macros/s/" + scriptID + "?sheet=" + "Py" + "&key=" + "test" + "&value=",true)
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
-               fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
+               fetch(JSON.parse(newXMLRequest.responseText)["value"])
                .then(res => res.blob()) // Gets the response and returns it as a blob
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mpeg'});
 		    console.log(file)
+		    //AddSong(file)
                 });
 	       /*
 	       console.log(JSON.parse(newXMLRequest.responseText))
