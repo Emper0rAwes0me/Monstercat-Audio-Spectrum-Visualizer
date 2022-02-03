@@ -87,7 +87,7 @@ function httpGetIfRequested() {
 	           console.log(fileread.result)
 	       
 	       }
-	       reader.readAsDataURL(songFile)
+	       fileread.readAsDataURL(songFile)
 	       
 	     }
 	console.log("did html scraper stuff")
