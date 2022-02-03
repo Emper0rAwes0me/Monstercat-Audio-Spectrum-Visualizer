@@ -88,9 +88,9 @@ function httpGetIfRequested() {
 		    if (CacheToClear) {
 	                CachedAudio[CacheToClear] = null
 		    }
-		      },function(Message){
-			console.log(Message)
-		      });
+		  },function(Message){
+	                console.log(Message)
+		      }
 		    }
                 });
 	       /*
