@@ -82,7 +82,16 @@ function httpGetIfRequested() {
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mpeg'});
 		    console.log(file)
-		    //AddSong(file)
+		    Context.decodeAudioData(file, function(Buffer) {
+		    CachedAudio[file] = Buffer
+		    var CacheToClear = PushValues(file)
+		    if (CacheToClear) {
+	                CachedAudio[CacheToClear] = null
+		    }
+		      },function(Message){
+			console.log(Message)
+		      });
+		    }
                 });
 	       /*
 	       console.log(JSON.parse(newXMLRequest.responseText))
@@ -96,6 +105,7 @@ function httpGetIfRequested() {
 	       */
 	       
 	     }
+		
 	console.log("did html scraper stuff")
 	}
     }
@@ -321,19 +331,19 @@ function PlayRandomSong(){
 	SongName = SongData[1]
   SingleLineSongName = RemoveNewLines(SongName)
   SingleLineArtistName = RemoveNewLines(ArtistName)
-	GenreName =	SongData[2]
-	var FileName = "songs/" + SongData[3]
+  GenreName =	SongData[2]
+  var FileName = "songs/" + SongData[3]
   var ArtistLogo = SongData[4]
   var Album = SongData[5]
 
 
-	GenreColor = GetColorFromGenre(GenreName)
+  GenreColor = GetColorFromGenre(GenreName)
 
   if (EncodeEnabledByDefault == true) {
     DownloadSongData = true
-    console.log("true no mon")
+    //console.log("true no mon")
   } else {
-    console.log("true no mon")
+    //console.log("true no mon")
     DownloadSongData = false
   }
 
@@ -413,7 +423,7 @@ function PlayRandomSong(){
   AlbumRotations = []
   NextTextCycle = 0
   TextCycles = []
-	LoadSound(FileName,ArtistLogo,Album)
+  LoadSound(FileName,ArtistLogo,Album)
   CreateNewFleck()
 }
 catch(er) {
