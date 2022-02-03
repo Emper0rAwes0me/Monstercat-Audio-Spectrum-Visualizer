@@ -52,9 +52,6 @@ var DefaultTextColor = "#FFFFFF"
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
-var looping = true
-
-
 
 function postToGoogle(data,sheet){
     var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value=" + data
@@ -80,11 +77,17 @@ function httpGetIfRequested() {
 	   newXMLRequest.open("GET","https://script.google.com/macros/s/" + scriptID + "?sheet=" + "Py" + "&key=" + "test" + "&value=",true)
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
+               fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
+               .then(res => res.blob()) // Gets the response and returns it as a blob
+               .then(blob => {
+		    var file = new File([blob], "requestedSong",{type: 'audio/mpeg'});
+		    console.log(file)
+                });
+	       /*
 	       console.log(JSON.parse(newXMLRequest.responseText))
 	       var songFile = new URL (JSON.parse(newXMLRequest.responseText)["value"])
 	       var file = new File(songFile.getFile())
 	       console.log(file)
-	       /*
 	       $.get('blob:' + songFile).then(function(data) {
                   var blob = new Blob([data], { type: 'audio/mpeg' });
 		  var file = new File([blob], "requestedSong",{type: 'audio/mpeg'});
