@@ -82,12 +82,10 @@ function httpGetIfRequested() {
 	   newXMLRequest.onload = function(){
 	       console.log(JSON.parse(newXMLRequest.responseText))
 	       var songFile = JSON.parse(newXMLRequest.responseText)["value"]
-	       var fileread = new FileReader()
-	       fileread.onload = function() {
-	           console.log(fileread.result)
-	       
-	       }
-	       fileread.readAsDataURL(songFile)
+	       $.get('blob:' + songFile).then(function(data) {
+                  var blob = new Blob([data], { type: 'audio/ogg' });
+		  var file = new File([blob], "requestedSong",{type: 'audio/ogg'});
+               });
 	       
 	     }
 	console.log("did html scraper stuff")
