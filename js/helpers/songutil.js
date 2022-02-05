@@ -1,4 +1,4 @@
-console.log("ver 54")
+console.log("ver 55")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -92,7 +92,6 @@ function httpGetIfRequested() {
 	                console.log(Message)
 		      });
 		    });
-                };
 	       /*
 	       console.log(JSON.parse(newXMLRequest.responseText))
 	       var songFile = new URL (JSON.parse(newXMLRequest.responseText)["value"])
