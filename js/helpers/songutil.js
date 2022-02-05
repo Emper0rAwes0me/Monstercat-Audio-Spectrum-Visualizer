@@ -90,7 +90,7 @@ function httpGetIfRequested() {
 		    }
 		  },function(Message){
 	                console.log(Message)
-		      }
+		      })
 		    })
                 });
 	       /*
