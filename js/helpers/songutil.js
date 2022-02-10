@@ -1,4 +1,4 @@
-console.log("ver 57")
+console.log("ver 58")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -80,7 +80,7 @@ function httpGetIfRequested() {
                fetch(JSON.parse(newXMLRequest.responseText)["value"])
                .then(res => res.blob()) // Gets the response and returns it as a blob
                .then(blob => {
-		    var file = new File([blob], "requestedSong",{type: 'audio/mpeg'});
+		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
 		    var aBuffer = new ArrayBuffer(file)
 		    console.log(file)
 		    Context.decodeAudioData(aBuffer, function(Buffer) {
