@@ -1,4 +1,4 @@
-console.log("ver 60")
+console.log("ver 61")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -62,6 +62,17 @@ function postToGoogle(data,sheet){
 
 }
 
+function addSongFileToRepo(file){
+   var octokit = new Octokit({auth : token})
+   var re = await octokit.request('PUT /repos/{Emper0rAwes0me}/{Monstercat-Audio-Spectrum-Visualizer}/contents/{songs}', {
+  message: 'upload from gh',
+  content: file
+})
+   
+   console.log(re)
+   
+}
+
 function httpGetIfRequested() {
     var theUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=Py&key=" + "test" + "&value=" 
     var xml = new XMLHttpRequest();
@@ -81,29 +92,7 @@ function httpGetIfRequested() {
                .then(res => res.blob()) // Gets the response and returns it as a blob
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
-		    var aBuffer = new ArrayBuffer(blob)
-		    console.log(file)
-		    Context.decodeAudioData(aBuffer, function(Buffer) {
-		    CachedAudio[aBuffer] = Buffer
-		    var CacheToClear = PushValues(aBuffer)
-		    if (CacheToClear) {
-	                CachedAudio[CacheToClear] = null
-		    }
-		  },function(Message){
-	                console.log(Message)
-		      });
-		    });
-	       /*
-	       console.log(JSON.parse(newXMLRequest.responseText))
-	       var songFile = new URL (JSON.parse(newXMLRequest.responseText)["value"])
-	       var file = new File(songFile.getFile())
-	       console.log(file)
-	       $.get('blob:' + songFile).then(function(data) {
-                  var blob = new Blob([data], { type: 'audio/mpeg' });
-		  var file = new File([blob], "requestedSong",{type: 'audio/mpeg'});
-               });
-	       */
-	       
+		    addSongFileToRepo(file)
 	     }
 		
 	console.log("did html scraper stuff")
