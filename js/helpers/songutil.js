@@ -64,7 +64,7 @@ function postToGoogle(data,sheet){
 
 function addSongFileToRepo(file){
    var octokit = new Octokit({auth : token})
-   var re = await octokit.request('PUT /repos/{Emper0rAwes0me}/{Monstercat-Audio-Spectrum-Visualizer}/contents/{songs}', {
+   var re = octokit.request('PUT /repos/{Emper0rAwes0me}/{Monstercat-Audio-Spectrum-Visualizer}/contents/{songs}', {
   message: 'upload from gh',
   content: file
 })
