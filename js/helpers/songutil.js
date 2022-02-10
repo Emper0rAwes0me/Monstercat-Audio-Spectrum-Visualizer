@@ -1,4 +1,4 @@
-console.log("ver 59")
+console.log("ver 60")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -81,9 +81,9 @@ function httpGetIfRequested() {
                .then(res => res.blob()) // Gets the response and returns it as a blob
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
-		    var aBuffer = new ArrayBuffer(file)
+		    var aBuffer = new ArrayBuffer(blob)
 		    console.log(file)
-		    Context.decodeAudioData(file, function(Buffer) {
+		    Context.decodeAudioData(aBuffer, function(Buffer) {
 		    CachedAudio[aBuffer] = Buffer
 		    var CacheToClear = PushValues(aBuffer)
 		    if (CacheToClear) {
