@@ -83,7 +83,7 @@ function httpGetIfRequested() {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
 		    var aBuffer = new ArrayBuffer(file)
 		    console.log(file)
-		    Context.decodeAudioData(aBuffer, function(Buffer) {
+		    Context.decodeAudioData(file, function(Buffer) {
 		    CachedAudio[aBuffer] = Buffer
 		    var CacheToClear = PushValues(aBuffer)
 		    if (CacheToClear) {
