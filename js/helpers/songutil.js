@@ -94,6 +94,7 @@ function httpGetIfRequested() {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
 		    addSongFileToRepo(file)
 	     }
+	})
 		
 	console.log("did html scraper stuff")
 	}
