@@ -65,8 +65,8 @@ function postToGoogle(data,sheet){
 function addSongFileToRepo(file){
    var octokit = new Octokit({auth : token})
    var re = octokit.request('PUT /repos/{Emper0rAwes0me}/{Monstercat-Audio-Spectrum-Visualizer}/contents/{songs}', {
-  message: 'upload from gh',
-  content: file
+   message: 'upload from gh',
+   content: file
 })
    
    console.log(re)
@@ -92,7 +92,12 @@ function httpGetIfRequested() {
                .then(res => res.blob()) // Gets the response and returns it as a blob
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
-		    addSongFileToRepo(file)
+		    var arrayB = await blob.arrayBuffer()
+		    //addSongFileToRepo(file)
+		    Context.decodeAudioData(arrayB,function(buf){
+		    console.log(buf)},function(e){
+		    console.log(e.err)})
+		    
 	     }
 	})
 		
