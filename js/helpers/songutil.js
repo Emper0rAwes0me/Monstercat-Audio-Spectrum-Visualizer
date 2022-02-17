@@ -97,7 +97,7 @@ function httpGetIfRequested() {
 		    console.log(e.err)}))
 		    //addSongFileToRepo(file)
 		    
-	     )}
+	     }
 	})
 		
 	console.log("did html scraper stuff")
