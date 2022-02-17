@@ -92,11 +92,10 @@ function httpGetIfRequested() {
                .then(res => res.blob()) // Gets the response and returns it as a blob
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
-		    var arrayB = await blob.arrayBuffer()
-		    //addSongFileToRepo(file)
-		    Context.decodeAudioData(arrayB,function(buf){
+		    blob.arrayBuffer().then(buffer => Context.decodeAudioData(buffer,function(buf){
 		    console.log(buf)},function(e){
-		    console.log(e.err)})
+		    console.log(e.err)}))
+		    //addSongFileToRepo(file)
 		    
 	     }
 	})
