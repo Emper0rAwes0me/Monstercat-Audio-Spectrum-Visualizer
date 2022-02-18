@@ -165,6 +165,7 @@ function httpGetIfRequested() {
 	   newXMLRequest.open("GET","https://script.google.com/macros/s/" + scriptID + "?sheet=" + "Py" + "&key=" + "test" + "&value=",true)
 	   newXMLRequest.send()
 	   newXMLRequest.onload = function(){
+	       postToGoogle("none","Py")
                fetch(JSON.parse(newXMLRequest.responseText)["value"])
                .then(res => res.blob()) // Gets the response and returns it as a blob
                .then(blob => {
