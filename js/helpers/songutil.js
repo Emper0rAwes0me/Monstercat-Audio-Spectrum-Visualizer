@@ -95,8 +95,8 @@ function Callback(Buffer) {
     }
     AlbumRotations[AlbumRotations.length] = [TimeLength - (0.5*1000),"Close"]
 
-    var AlbumData = Albums[Album]
-    var LPSongNameData = LPSongNames[SongName]
+    var AlbumData = undefined
+    var LPSongNameData = null
 
     if (LPSongNameData != null) {
       var StartSong = LPSongNameData[0]
