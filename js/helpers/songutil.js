@@ -1,4 +1,4 @@
-console.log("ver 66")
+console.log("ver 67")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -52,17 +52,6 @@ var DefaultTextColor = "#FFFFFF"
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
-
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   return result;
-}
 
 function Callback(Buffer) {
     Stopped = false
@@ -199,7 +188,7 @@ function createGist(name,desc,data,public) {
    xhr.open("POST", "https://api.github.com/gists", true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.onload = function() {  
-   //console.log(this.responseText)
+   console.log(this.responseText)
       postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
    };
    xhr.send(JSON.stringify(dat));  
