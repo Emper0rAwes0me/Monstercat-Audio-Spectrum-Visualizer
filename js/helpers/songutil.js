@@ -77,7 +77,7 @@ function Callback(Buffer) {
     MainDiv.style.display = "block"
     LoadingDiv.style.display = "none"
 
-    var AlbumImageLink = "img/albums/" + Album +".png"
+    var AlbumImageLink = "img/albums/valkyriesingle.png"
     Preload(MonstercatLogo.innerHTML)
     AlbumRotations[0] = [0.5*1000,"Open"]
     if (ArtistLogo != null) {
