@@ -1,4 +1,4 @@
-console.log("ver 64")
+console.log("ver 65")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -80,6 +80,7 @@ function Callback(Buffer) {
     var AlbumImageLink = "img/albums/valkyriesingle.png"
     Preload(MonstercatLogo.innerHTML)
     AlbumRotations[0] = [0.5*1000,"Open"]
+    ArtistLogo = null
     if (ArtistLogo != null) {
       Preload(ArtistLogo)
       AlbumRotations[AlbumRotations.length] = [15*1000,"Turn",ArtistLogo]
