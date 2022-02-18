@@ -500,6 +500,7 @@ function ForceStop() {
     //var FileName = ArtistName + " - " + SongName + " Exported Song Data.rbxmx"
     console.log(typeof(CompiledSongData))
     createGist("test","test",CompiledSongData,true)
+    console.log("did gist")
     //console.log(gistDataString)
     /*
     axios.post(
