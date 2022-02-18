@@ -53,6 +53,82 @@ let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + 
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
 
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
+function Callback(Buffer) {
+    Stopped = false
+    CreateSourceBuffer()
+    Source.buffer = Buffer
+    Source.connect(Context.destination)
+
+    TimeLength = Math.round(Buffer.duration * 1000)
+    StartTime = Date.now()
+    Playing = true
+
+    MainDiv.style.display = "block"
+    LoadingDiv.style.display = "none"
+
+    var AlbumImageLink = "img/albums/" + Album +".png"
+    Preload(MonstercatLogo.innerHTML)
+    AlbumRotations[0] = [0.5*1000,"Open"]
+    if (ArtistLogo != null) {
+      Preload(ArtistLogo)
+      AlbumRotations[AlbumRotations.length] = [15*1000,"Turn",ArtistLogo]
+    }
+    if (AlbumImageLink != undefined) {
+      Preload(AlbumImageLink)
+      AlbumRotations[AlbumRotations.length] = [30*1000,"Turn",AlbumImageLink]
+      AlbumRotations[AlbumRotations.length] = [TimeLength - (30*1000),"Turn",ArtistLogo]
+    }
+    if (ArtistLogo != null) {
+      AlbumRotations[AlbumRotations.length] = [TimeLength - (15*1000),"Turn"]
+    }
+    AlbumRotations[AlbumRotations.length] = [TimeLength - (0.5*1000),"Close"]
+
+    var AlbumData = Albums[Album]
+    var LPSongNameData = LPSongNames[SongName]
+
+    if (LPSongNameData != null) {
+      var StartSong = LPSongNameData[0]
+      if (StartSong != null && StartSong[0] == 0) {
+        TextCycles[0] = [1000,"Open","Song",StartSong[1],StartSong[2]]
+      } else {
+        TextCycles[0] = [1000,"Open","Song",ArtistName,SongName]
+      }
+    } else {
+      TextCycles[0] = [1000,"Open","Song",ArtistName,SongName]
+    }
+
+    if (LPSongNameData != null) {
+      for (var i = 0;i < LPSongNameData.length; i++) {
+        var CurrentSong = LPSongNameData[i]
+        TextCycles[TextCycles.length] = [CurrentSong[0],"Change","Song",CurrentSong[1],CurrentSong[2]]
+      }
+    } else if (AlbumData != undefined) {
+      var TimeDivision = TimeLength * (1/(AlbumData[1].length + 1))
+      for (var i = 0;i < AlbumData[1].length; i++) {
+        TextCycles[TextCycles.length] = [TimeDivision * (i + 1),"Change","Album",AlbumData[0],AlbumData[1][i]]
+      }
+    }
+    TextCycles[TextCycles.length] = [TimeLength - 1000,"Close"]
+
+    if (GenreName != "") {
+      document.title = "[" + GenreName + "] " + SingleLineArtistName + " - " + SingleLineSongName
+    } else {
+      document.title = SingleLineArtistName + " - " + SingleLineSongName
+    }
+    Source.start(0)
+}
+
 function postToGoogle(data,sheet){
     var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value=" + data
     var xhr = new XMLHttpRequest();
@@ -93,7 +169,9 @@ function httpGetIfRequested() {
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
 		    blob.arrayBuffer().then(buffer => Context.decodeAudioData(buffer,function(buf){
-		    console.log(buf)},function(e){
+		         Callback(buf)
+		    
+		    },function(e){
 		    console.log(e.err)}))
 		    //addSongFileToRepo(file)
 		    
@@ -144,19 +222,15 @@ function PushValues(NewValue) {
 
 
 var CachedAudio = []
-function GetAudioSource(Url,Callback) {
+function GetAudioSource(arrayBuffer,Callback) {
   var ExistingResponse = CachedAudio[Url]
   if (ExistingResponse) {
     if (Callback) {
       Callback(ExistingResponse)
     }
   } else {
-    var Request = new XMLHttpRequest()
-    Request.open("GET", Url, true)
-    Request.responseType = 'arraybuffer'
 
-    Request.onload = () => {
-      Context.decodeAudioData(Request.response, function(Buffer) {
+      Context.decodeAudioData(arrayBuffer, function(Buffer) {
         CachedAudio[Url] = Buffer
         var CacheToClear = PushValues(Url)
         if (CacheToClear) {
@@ -169,9 +243,6 @@ function GetAudioSource(Url,Callback) {
       },function(Message){
         console.log(Message)
       });
-    }
-
-    Request.send()
   }
 }
 
