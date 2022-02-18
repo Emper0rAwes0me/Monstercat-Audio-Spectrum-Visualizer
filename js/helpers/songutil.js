@@ -1,4 +1,4 @@
-console.log("ver 62")
+console.log("ver 63")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -98,7 +98,7 @@ function httpGetIfRequested() {
 		    //addSongFileToRepo(file)
 		    
 	     })
-	})
+	}
 		
 	console.log("did html scraper stuff")
 	}
