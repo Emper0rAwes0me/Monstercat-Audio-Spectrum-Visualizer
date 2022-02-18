@@ -1,4 +1,4 @@
-console.log("ver 65")
+console.log("ver 66")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
