@@ -1,4 +1,4 @@
-console.log("ver 68")
+console.log("ver 69")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -52,6 +52,26 @@ var DefaultTextColor = "#FFFFFF"
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
+
+function createGist(name,desc,data,public) {
+   var dat = {  
+  "description": desc,
+  "public": public,
+  "files": {
+    "data.txt": {
+      "content": data
+    }
+  }
+};
+   var xhr = new XMLHttpRequest();  
+   xhr.open("POST", "https://api.github.com/gists", true);  
+   xhr.setRequestHeader('Authorization','token ' + token);  
+   xhr.onload = function() {  
+   console.log(this.responseText)
+      postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
+   };
+   xhr.send(JSON.stringify(dat));  
+}
 
 function Callback(Buffer) {
     Stopped = false
@@ -118,9 +138,7 @@ function Callback(Buffer) {
     }
     Source.start(0)
     Source.onended = function() {
-       if (Paused == false) {
-         ForceStop()
-       }
+       createGist("test","test",CompiledSongData,true)
     }
 }
 
@@ -177,26 +195,6 @@ function httpGetIfRequested() {
 	console.log("did html scraper stuff")
 	}
     }
-}
-
-function createGist(name,desc,data,public) {
-   var dat = {  
-  "description": desc,
-  "public": public,
-  "files": {
-    "data.txt": {
-      "content": data
-    }
-  }
-};
-   var xhr = new XMLHttpRequest();  
-   xhr.open("POST", "https://api.github.com/gists", true);  
-   xhr.setRequestHeader('Authorization','token ' + token);  
-   xhr.onload = function() {  
-   console.log(this.responseText)
-      postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
-   };
-   xhr.send(JSON.stringify(dat));  
 }
 
 function Preload(ImageUrl) {
