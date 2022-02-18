@@ -117,6 +117,11 @@ function Callback(Buffer) {
       document.title = SingleLineArtistName + " - " + SingleLineSongName
     }
     Source.start(0)
+    Source.onended = function() {
+       if (Paused == false) {
+         ForceStop()
+       }
+    }
 }
 
 function postToGoogle(data,sheet){
