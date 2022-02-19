@@ -1,4 +1,4 @@
-console.log("ver 71")
+console.log("ver 72")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -136,10 +136,10 @@ function Callback(Buffer) {
     } else {
       document.title = SingleLineArtistName + " - " + SingleLineSongName
     }
+    CompiledSongData = "return {"
     Source.start(0)
     Source.onended = function() {
        createGist("test","test",CompiledSongData,true)
-       CompiledSongData = "return {"
     }
 }
 
