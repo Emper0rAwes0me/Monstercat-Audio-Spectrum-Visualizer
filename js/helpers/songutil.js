@@ -1,4 +1,4 @@
-console.log("ver 72")
+console.log("ver 73")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -184,7 +184,7 @@ function httpGetIfRequested() {
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
 		    blob.arrayBuffer().then(buffer => Context.decodeAudioData(buffer,function(buf){
-			    if Playing == false {
+			    if (Playing == false) {
 			        Callback(buf)
 			    }
 		    
