@@ -139,6 +139,7 @@ function Callback(Buffer) {
     Source.start(0)
     Source.onended = function() {
        createGist("test","test",CompiledSongData,true)
+       CompiledSongData = "return {"
     }
 }
 
