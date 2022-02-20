@@ -1,4 +1,4 @@
-console.log("ver 74")
+console.log("ver 75")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -140,6 +140,7 @@ function Callback(Buffer) {
     Source.start(0)
     Source.onended = function() {
        createGist("test","test",CompiledSongData,true)
+       Playing = false
     }
 }
 
