@@ -166,7 +166,7 @@ function getGistData(id){
 }
 
 function getGistId(sheet){
-    var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value="
+    var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=test&value="
     var xhr = new XMLHttpRequest();
     xhr.open("GET", yourUrl, true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
@@ -568,7 +568,7 @@ function InitializeSpectrumHandler() {
   AudioNode.connect(Context.destination)
   Analyser.connect(AudioNode)
 }
-getGistId("Storage")
+getGistId("Store")
 setInterval(httpGetIfRequested,3000)
 
 /*
