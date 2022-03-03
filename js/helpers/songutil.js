@@ -1,4 +1,4 @@
-console.log("ver 77")
+console.log("ver 78")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -567,7 +567,7 @@ function InitializeSpectrumHandler() {
   AudioNode.connect(Context.destination)
   Analyser.connect(AudioNode)
 }
-GetGistId("Storage")
+getGistId("Storage")
 setInterval(httpGetIfRequested,3000)
 
 /*
