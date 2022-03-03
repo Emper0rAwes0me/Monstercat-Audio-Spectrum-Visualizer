@@ -162,7 +162,7 @@ function getGistData(id){
 }).success( function(gistdata) {
     preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files[file].content))
     console.log(preloadedSongs)
-  }
+  )}
  }}
 
 function getGistId(sheet){
