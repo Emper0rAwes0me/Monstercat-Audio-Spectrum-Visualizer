@@ -159,11 +159,11 @@ function getGistData(id){
   url: 'https://api.github.com/gists/'+id,
   type: 'GET',
   dataType: 'jsonp',
-success : function(gistdata) {
-    preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files[file].content))
-    console.log(preloadedSongs)
-  }
-})
+  success : function(gistdata) {
+     preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files[file].content))
+     console.log(preloadedSongs)
+  }}
+)}
 
 function getGistId(sheet){
     var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=test&value="
