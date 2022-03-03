@@ -1,4 +1,4 @@
-console.log("ver 80")
+console.log("ver 81")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -155,11 +155,12 @@ function postToGoogle(data,sheet){
 
 }
 function getGistData(id){
-  $.ajax({
+  var req = $.ajax({
   url: 'https://api.github.com/gists/'+id,
   type: 'GET',
   dataType: 'jsonp'
-}).success( function(gistdata) {
+})
+  req.success(function(gistdata) {
     preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files[file].content))
     console.log(preloadedSongs)
   })
