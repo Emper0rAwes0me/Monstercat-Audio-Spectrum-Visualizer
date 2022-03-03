@@ -1,4 +1,4 @@
-console.log("ver 75")
+console.log("ver 77")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -52,6 +52,8 @@ var DefaultTextColor = "#FFFFFF"
 let scriptID = "AKfycbynHzTxDTOAHaMuxGR5P5t5jlPIgMPftBm7VVaHCdGuGyLhP3py8k4x" + "/exec";
 
 var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg==")
+
+var preloadedSongs = []
 
 function createGist(name,desc,data,public) {
    var dat = {  
@@ -152,16 +154,30 @@ function postToGoogle(data,sheet){
     xhr.send()
 
 }
+function getGistData(id){
+  $.ajax({
+  url: 'https://api.github.com/gists/'+id,
+  type: 'GET',
+  dataType: 'jsonp'
+}).success( function(gistdata) {
+    preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files[file].content))
+    console.log(preloadedSongs)
+  }
+ }}
 
-function addSongFileToRepo(file){
-   var octokit = new Octokit({auth : token})
-   var re = octokit.request('PUT /repos/{Emper0rAwes0me}/{Monstercat-Audio-Spectrum-Visualizer}/contents/{songs}', {
-   message: 'upload from gh',
-   content: file
-})
-   
-   console.log(re)
-   
+function getGistId(sheet){
+    var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=" + "test" + "&value="
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", yourUrl, true);
+    //xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send()
+    xhr.onload = function() {
+        var data = JSON.parse(xml.responseText)["value"]
+	var splitLink = data.split("Emper0rAwes0me")[1]
+	var gistID = splitLink.split("/")[0]
+	getGistData(gistID)
+	
+    }
 }
 
 function httpGetIfRequested() {
@@ -551,7 +567,7 @@ function InitializeSpectrumHandler() {
   AudioNode.connect(Context.destination)
   Analyser.connect(AudioNode)
 }
-
+GetGistId("Storage")
 setInterval(httpGetIfRequested,3000)
 
 /*
