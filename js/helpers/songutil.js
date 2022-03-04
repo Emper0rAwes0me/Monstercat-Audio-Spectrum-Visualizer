@@ -1,4 +1,4 @@
-console.log("ver 89")
+console.log("ver 90")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -211,9 +211,9 @@ function getGistId(sheet){
 	console.log(xhr.responseText)
         var data = JSON.parse(xhr.responseText)["value"]
 	var splitLink = data.split("Emper0rAwes0me")[1]
-	console.log(data.split("Emper0rAwes0me"))
-	var gistID = splitLink.split("/")[0]
-	console.log(splitLink.split("/"))
+	//console.log(data.split("Emper0rAwes0me"))
+	var gistID = splitLink.split("/")[1]
+	//console.log(splitLink.split("/"))
 	console.log(gistID)
 	getGistData(gistID)
     }
