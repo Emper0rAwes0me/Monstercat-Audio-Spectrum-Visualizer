@@ -1,4 +1,4 @@
-console.log("ver 86")
+console.log("ver 87")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -201,16 +201,16 @@ var xhr = new XMLHttpRequest();
 function getGistId(sheet){
     var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=test&value="
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", yourUrl, false);
+    xhr.open("GET", yourUrl, true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send()
-	xhr.onload = function() {
+    xhr.onload = function() {
 	console.log(xhr.responseText)
         var data = JSON.parse(xhr.responseText)["value"]
 	var splitLink = data.split("Emper0rAwes0me")[1]
 	var gistID = splitLink.split("/")[0]
 	getGistData(data)
-}
+    }
 	
 }
 
