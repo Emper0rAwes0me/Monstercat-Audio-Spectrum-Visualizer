@@ -194,7 +194,7 @@ var xhr = new XMLHttpRequest();
   dataType: 'jsonp',
   success : function(gistdata) {
      console.log(gistdata)
-     preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files["data.txt"].content))
+     preloadedSongs = JSON.parse(gistdata.data.files["data.txt"].content)
      //postToGoogle(JSON.dump(pre,sheet)
      console.log(preloadedSongs)
   }}
