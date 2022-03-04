@@ -1,4 +1,4 @@
-console.log("ver 87")
+console.log("ver 88")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -173,6 +173,7 @@ function postToGoogle(data,sheet){
 
 }
 function getGistData(id){
+/*
 var xhr = new XMLHttpRequest();  
    xhr.open("GET", id, true);  
    xhr.setRequestHeader('Authorization','token ' + token);  
@@ -184,8 +185,9 @@ var xhr = new XMLHttpRequest();
    };
    xhr.send(); 
 }
+*/
 
-	/*
+	///*
   var req = $.ajax({
   url: 'https://api.github.com/gists/'+id,
   type: 'GET',
@@ -193,10 +195,11 @@ var xhr = new XMLHttpRequest();
   success : function(gistdata) {
      console.log(gistdata)
      preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files["data.txt"].content))
+     //postToGoogle(JSON.dump(pre,sheet)
      console.log(preloadedSongs)
   }}
 )}
-  */
+  //*/
 
 function getGistId(sheet){
     var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=test&value="
