@@ -1,4 +1,4 @@
-console.log("ver 81")
+console.log("ver 82")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -55,7 +55,7 @@ var token = window.atob("Z2hwX1ZVRVRQTTVqaGtpR2lVeW5YV0hoTERIRFVUMWl4RzJZejlNdg=
 
 var preloadedSongs = []
 
-function createGist(name,desc,data,public) {
+function createGist(name,desc,data,public,sheet) {
    var dat = {  
   "description": desc,
   "public": public,
@@ -70,12 +70,12 @@ function createGist(name,desc,data,public) {
    xhr.setRequestHeader('Authorization','token ' + token);  
    xhr.onload = function() {  
    console.log(this.responseText)
-      postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
+      postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],sheet)
    };
    xhr.send(JSON.stringify(dat));  
 }
 
-function Callback(Buffer) {
+function Callback(Buffer,st) {
     Stopped = false
     CreateSourceBuffer()
     Source.buffer = Buffer
@@ -141,7 +141,25 @@ function Callback(Buffer) {
     CompiledSongData = "return {"
     Source.start(0)
     Source.onended = function() {
-       createGist("test","test",CompiledSongData,true)
+	    var dat = {  
+	  "description": "test",
+	  "public": true,
+	  "files": {
+	    "data.txt": {
+	      "content": CompiledSongData
+	    }
+	  }
+	};
+	   var xhr = new XMLHttpRequest();  
+	   xhr.open("POST", "https://api.github.com/gists", true);  
+	   xhr.setRequestHeader('Authorization','token ' + token);  
+	   xhr.onload = function() {  
+	   console.log(this.responseText)
+	      postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
+	      preloadedSongs[st] = JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"]
+	      createGist("json","json",JSON.dump(preloadedSongs),true,"Store")
+	   };
+	   xhr.send(JSON.stringify(dat));  
        Playing = false
     }
 }
@@ -160,7 +178,7 @@ function getGistData(id){
   type: 'GET',
   dataType: 'jsonp',
   success : function(gistdata) {
-     preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files[file].content))
+     preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files["data.txt"].content))
      console.log(preloadedSongs)
   }}
 )}
@@ -202,8 +220,13 @@ function httpGetIfRequested() {
                .then(blob => {
 		    var file = new File([blob], "requestedSong",{type: 'audio/mp3'});
 		    blob.arrayBuffer().then(buffer => Context.decodeAudioData(buffer,function(buf){
+			    if (JSON.parse(newXMLRequest.responseText)["value"] in preloadedSongs) {
+			        postToGoogle("Global2",preloadedSongs[JSON.parse(newXMLRequest.responseText)["value"]])
+				return
+			    }
 			    if (Playing == false) {
-			        Callback(buf)
+				//createGist("json","json",
+			        Callback(buf,JSON.parse(newXMLRequest.responseText)["value"])
 			    }
 		    
 		    },function(e){
