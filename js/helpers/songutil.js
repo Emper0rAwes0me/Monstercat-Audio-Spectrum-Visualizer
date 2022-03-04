@@ -1,4 +1,4 @@
-console.log("ver 82")
+console.log("ver 83")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -173,14 +173,29 @@ function postToGoogle(data,sheet){
 
 }
 function getGistData(id){
+var xhr = new XMLHttpRequest();  
+   xhr.open("GET", id, true);  
+   xhr.setRequestHeader('Authorization','token ' + token);  
+   xhr.onload = function() {  
+   console.log(this.body)
+   preloadedSongs = JSON.parse(this.body)
+   console.log(preloadedSongs)
+      //postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],sheet)
+   };
+   xhr.send(); 
+}
+
+	/*
   var req = $.ajax({
   url: 'https://api.github.com/gists/'+id,
   type: 'GET',
   dataType: 'jsonp',
   success : function(gistdata) {
+     console.log(gistdata)
      preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files["data.txt"].content))
      console.log(preloadedSongs)
   }}
+  */
 )}
 
 function getGistId(sheet){
@@ -194,7 +209,7 @@ function getGistId(sheet){
         var data = JSON.parse(this.responseText)["value"]
 	var splitLink = data.split("Emper0rAwes0me")[1]
 	var gistID = splitLink.split("/")[0]
-	getGistData(gistID)
+	getGistData(data)
 	
     }
 }
