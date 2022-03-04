@@ -212,7 +212,8 @@ function getGistId(sheet){
         var data = JSON.parse(xhr.responseText)["value"]
 	var splitLink = data.split("Emper0rAwes0me")[1]
 	var gistID = splitLink.split("/")[0]
-	getGistData(data)
+	console.log(gistID)
+	getGistData(gistID)
     }
 	
 }
