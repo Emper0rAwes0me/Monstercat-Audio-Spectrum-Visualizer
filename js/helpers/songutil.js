@@ -1,4 +1,4 @@
-console.log("ver 83")
+console.log("ver 84")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -201,7 +201,7 @@ var xhr = new XMLHttpRequest();
 function getGistId(sheet){
     var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=test&value="
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", yourUrl, true);
+    xhr.open("GET", yourUrl, false);
     //xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send()
     xhr.onload = function() {
