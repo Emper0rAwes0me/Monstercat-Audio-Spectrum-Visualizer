@@ -1,4 +1,4 @@
-console.log("ver 92")
+console.log("ver 93")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -242,7 +242,7 @@ function httpGetIfRequested() {
 		    blob.arrayBuffer().then(buffer => Context.decodeAudioData(buffer,function(buf){
 			    if (JSON.parse(newXMLRequest.responseText)["value"] in preloadedSongs === true) {
 				console.log("got preloaded")
-			        postToGoogle("Global2",preloadedSongs[JSON.parse(newXMLRequest.responseText)["value"]])
+			        postToGoogle(preloadedSongs[JSON.parse(newXMLRequest.responseText)["value"]],"Global2")
 				return
 			    }
 			    if (Playing == false) {
