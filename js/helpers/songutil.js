@@ -195,8 +195,8 @@ var xhr = new XMLHttpRequest();
      preloadedSongs = JSON.parse(JSON.parse(gistdata.data.files["data.txt"].content))
      console.log(preloadedSongs)
   }}
-  */
 )}
+  */
 
 function getGistId(sheet){
     var yourUrl = "https://script.google.com/macros/s/" + scriptID + "?sheet=" + sheet + "&key=test&value="
