@@ -1,4 +1,4 @@
-console.log("ver 93")
+console.log("ver 94")
 var Context = new AudioContext()
 var SampleRate = Context.sampleRate
 var Source
@@ -157,7 +157,7 @@ function Callback(Buffer,st) {
 	   console.log(this.responseText)
 	      postToGoogle(JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"],"Global2")
 	      preloadedSongs[st] = JSON.parse(this.responseText)["files"]["data.txt"]["raw_url"]
-	      createGist("json","json",JSON.dump(preloadedSongs),true,"Store")
+	      createGist("json","json",JSON.stringify(preloadedSongs),true,"Store")
 	   };
 	   xhr.send(JSON.stringify(dat));  
        Playing = false
